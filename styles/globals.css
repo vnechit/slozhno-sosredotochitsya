@@ -1,4 +1,6 @@
-/* Глобальные стили для проекта, их можно дополнять и менять по желанию */
+@charset "UTF-8";
+
+/* Глобальные стили для проекта */
 
 *,
 *::before,
@@ -6,10 +8,18 @@
   box-sizing: border-box;
 }
 
+html {
+  block-size: 100%;
+}
+
 body {
+  font-family: var(--font-family);
+  font-size: 18px;
+  font-weight: 400;
   min-inline-size: 375px;
-  max-inline-size: 1440px;
+  max-inline-size: 1024px;
   margin: 0 auto;
+  block-size: 100%;
 }
 
 h1,
@@ -24,6 +34,7 @@ p {
 
 ul {
   margin: 0;
+
   padding: 0;
   list-style: none;
 }
@@ -39,4 +50,46 @@ a {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.decorated-zone::before {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border-left: 1px solid var(--corners-color);
+  border-bottom: 1px solid var(--corners-color);
+  left: 20px;
+  bottom: 20px;
+}
+
+@media (width < 768px) and (width >= 375px) {
+  .decorated-zone::before {
+    left: 10px;
+    bottom: 17px;
+  }
+}
+
+.decorated-zone::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border-right: 1px solid var(--corners-color);
+  border-top: 1px solid var(--corners-color);
+  right: 20px;
+  top: 20px;
+}
+
+@media (width < 768px) and (width >= 375px) {
+  .decorated-zone::after {
+    right: 10px;
+    top: 10px;
+  }
+}
+
+.title-decor {
+  background: var(--title-decor);
 }

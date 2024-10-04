@@ -2,7 +2,7 @@
   --transition-duration: 0.25s;
 
   background: var(--background-image) no-repeat top center, var(--background-color);
-  background-size: auto 768px;
+  background-size: cover;
   background-attachment: fixed;
   color: var(--main-text-color);
   transition-duration: var(--transition-duration);
@@ -26,12 +26,11 @@
   position: absolute;
   width: 10px;
   height: 10px;
-  margin: -5px -20px 0 0;
   border-radius: 50%;
   box-shadow: 0 0 4px 2px var(--rec-color);
   background-color: var(--rec-color);
-  top: 50%;
-  right: 0;
+  top: 7px;
+  right: -20px;
 }
 
 .header__theme-menu {
@@ -71,12 +70,12 @@
 
 .header__theme-menu-button_active {
   border: 1px solid;
+  pointer-events: none;
 }
 
 .header__title {
   font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   font-weight: 700;
-  margin-left: -2%;
   color: var(--title-color);
   text-shadow: 4px 4px 0px var(--title-shadow);
 }
@@ -148,7 +147,7 @@
 
 .section__article-text-link {
   border: transparent;
-  text-shadow: 3px 3px 0px var(--link-shadow);
+  text-shadow: 2px 2px 0px var(--link-shadow);
   transition-duration: var(--transition-duration);
 }
 
@@ -164,21 +163,18 @@
   outline: 1px solid var(--main-text-color);
 }
 
-.section:first-of-type,
-.section:nth-of-type(3) {
+.section-column {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-.section:first-of-type .section__title,
-.section:nth-of-type(3) .section__title {
+.section-column .section__title {
   flex: 0 0 auto;
   width: 33%;
 }
 
-.section:first-of-type .section__article-list,
-.section:nth-of-type(3) .section__article-list {
+.section-column .section__article-list {
   flex: 0 0 auto;
   width: 66%;
   flex-direction: column;
@@ -189,6 +185,8 @@
   padding: 282px 20px;
   position: relative;
   text-align: center;
+  block-size: 100vh;
+  min-block-size: 668px;
 }
 
 .footer__title {
@@ -198,11 +196,11 @@
   text-shadow: 2px 2px 0px var(--title-shadow);
 }
 
-.section:nth-of-type(2) .section__title {
+.section-row .section__title {
   width: 30%;
 }
 
-.section:nth-of-type(2) .section__article-item {
+.section-row .section__article-item {
   flex: 0 0 auto;
   width: 32%;
 }
@@ -272,11 +270,6 @@
   }
 }
 
-@media (width < 1024px) and (width >= 768px) {
-  .header__title {
-    margin-left: -3%;
-  }
-}
 
 @media (width < 768px) and (width >= 375px) {
   .decorated-zone::after {
@@ -360,54 +353,50 @@
 }
 
 @media (width < 1024px) and (width >= 768px) {
-  .section:first-of-type .section__title,
-  .section:nth-of-type(3) .section__title {
+  .section-column .section__title {
     width: 32%;
   }
 }
 
 @media (width < 768px) and (width >= 375px) {
-  .section:first-of-type .section__title,
-  .section:nth-of-type(3) .section__title {
+  .section-column .section__title {
     width: 100%;
     margin-bottom: 20px;
   }
 }
 
 @media (width < 1024px) and (width >= 768px) {
-  .section:first-of-type .section__article-list,
-  .section:nth-of-type(3) .section__article-list {
+  .section-column .section__article-list {
     width: 65%;
   }
 }
 
 @media (width < 768px) and (width >= 375px) {
-  .section:first-of-type .section__article-list,
-  .section:nth-of-type(3) .section__article-list {
+  .section-column .section__article-list {
     width: 100%;
   }
 }
 
 @media (width < 768px) and (width >= 375px) {
-  .section:nth-of-type(2) .section__title {
+  .section-row .section__title {
     width: 100%;
   }
 }
 
 @media (width >= 1024px) {
-  .section:nth-of-type(2) .section__article-list {
+  .section-row .section__article-list {
     justify-content: space-between;
   }
 }
 
 @media (width < 1024px) and (width >= 375px) {
-  .section:nth-of-type(2) .section__article-list {
+  .section-row .section__article-list {
     gap: 20px;
   }
 }
 
 @media (width < 1024px) and (width >= 375px) {
-  .section:nth-of-type(2) .section__article-item {
+  .section-row .section__article-item {
     flex: 1 0 auto;
     width: 100%;
   }
@@ -428,8 +417,7 @@
     grid-column: span 2;
   }
 
-  .section:last-of-type .section__image:nth-of-type(2),
-  .section:last-of-type .section__image:nth-of-type(3) {
+  .section__image-double-row {
     grid-row: span 2;
   }
 }

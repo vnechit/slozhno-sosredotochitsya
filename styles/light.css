@@ -14,10 +14,6 @@
   --rec-color: var(--background-color);
 }
 
-.page.theme_light .header__rec {
-  display: none;
-}
-
 @media (prefers-color-scheme: light) {
   :root {
     --main-text-color: #353430;
